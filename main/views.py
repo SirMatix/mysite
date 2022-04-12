@@ -10,7 +10,7 @@ from datetime import datetime
 # Create your views here.
 def homepage(request):
     template_name = "main/home.html"
-    return render(request,template_name)
+    return render(request,template_name, { "page_name": "Home"})
 
 
 def register(request):
@@ -75,4 +75,5 @@ def calendar_view(request):
             "year": year,
             "month": month,
             "cal": cal,
+            "page_name": "View Calendar",
         })
