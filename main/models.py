@@ -13,7 +13,7 @@ class Client(models.Model):
 
 class Event(models.Model):
     event = models.CharField('Event Name', max_length=128)
-    event_date = models.DateField('Event Date')
+    event_date = models.DateTimeField('Event Date')
     address = models.CharField('Event Address', max_length=128)
     description = models.TextField(blank=True)
 
