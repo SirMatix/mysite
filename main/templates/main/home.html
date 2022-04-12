@@ -1,0 +1,26 @@
+{% extends "main/header.html" %}
+{% block title %} Home Page {% endblock title %}
+{% block content %} 
+    {% if user.is_authenticated %}
+        <main class="valign-wrapper">
+            <span class="container grey-text text-lighten-1">
+                <p class="flow-text">Welcome {{ user.username }} to</p>
+                <h1 class="title grey-text text-lighten-3">Adviser Helper</h1>
+                <blockquote class="flow-text">A place for every adviser to manage their clients</blockquote>
+            </span>
+        </main>
+        
+        <section>
+        </section>
+    {% else %}
+        <main class="valign-wrapper">
+            <span class="container grey-text text-lighten-1">
+                <p class="flow-text">Welcome to</p>
+                <h1 class="title grey-text text-lighten-3">Adviser Helper</h1>
+                <blockquote class="flow-text">A place for every adviser to manage their clients</blockquote>
+            </span>
+        </main>
+        <section>
+        </section>
+    {% endif %}
+{% endblock %}
