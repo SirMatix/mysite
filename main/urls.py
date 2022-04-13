@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.conf.urls import url
 from . import views
 
 
@@ -24,5 +25,12 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('logout/', views.logout_request, name="logout"),
     path('login/', views.login_request, name="login"),
-    path('calendar/', views.calendar_view, name="calendar"),
+    # both methods work.
+    #path('calendar/', views.CalendarView.as_view(), name='calendar'),
+    #path('calendar/<str:month>', views.CalendarView.as_view(), name='calendar'),
+    url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
+    url(r'^event/new/$', views.event, name='event_new'),
+    url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
+
+
 ] 

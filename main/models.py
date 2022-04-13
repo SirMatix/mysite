@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from datetime import datetime
@@ -22,3 +23,8 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def get_html_url(self):
+        url = reverse('main:event_edit', args=(self.id,))
+        return f'<a href="{url}"> {self.title} </a>'
