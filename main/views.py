@@ -145,4 +145,5 @@ def event(request, event_id=None):
     if request.POST and form.is_valid():
         form.save()
         return redirect("main:calendar")
+        
     return render(request, 'main/event.html', {'form': form})
