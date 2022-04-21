@@ -9,6 +9,5 @@ class ClientAdmin(admin.ModelAdmin):
     ]
 
 
-
 admin.site.register(Client, ClientAdmin)
 admin.site.register(Event)

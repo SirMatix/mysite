@@ -2,16 +2,20 @@
 {% block title %} Calendar {% endblock title %}
 {% block content %}
 
-    <div class="row center">
-        <div class="col s12 m10 offset-m1">
-            <h1 class="header">Calendar</h1>
+    <div class="container">
+        <div class="row center">
+            <div class="col">
+                <h4 class="light">Hi, {{ user.username }} <br/> below is your Calendar for {{month}} {{year}} </h4>
+            </div>
         </div>
-        <div class="col s12 m8 offset-m2">
-            <h4 class="light">Hi, {{ user.username }} <br/> below is your Calendar for {{month}} {{year}} </h4>
+        <br/>
+        <div class="clearfix">
+            <a class="btn btn-info left" href="{% url 'main:calendar' %}?{{ prev_month }}"> Previous Month </a>
+            <a class="btn btn-info right" href="{% url 'main:calendar' %}?{{ next_month }}"> Next Month </a>
+        </div>        
+        <div class="row center">
+            {{calendar}}
         </div>
-    </div>
-    <div class="row center">
-        {{cal|safe}}
     </div>
 
 {% endblock %}
