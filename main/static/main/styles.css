@@ -52,7 +52,13 @@ nav {
     line-height: 56px;
 }
 
+.sidenav .collapsible-header, .sidenav.fixed .collapsible-header {
+  padding: 0 32px;
+}
 
+.sidenav .collapsible-body li a, .sidenav.fixed .collapsible-body li a {
+  padding: 0 48px;
+}
 
 nav.top-nav h1.header {
     margin: 0;
@@ -119,13 +125,6 @@ nav.top-nav h1.header {
   
   .right {
     float: right;
-  }
-  
-  .btn {
-    outline: none;
-    color: black;
-    background-color: transparent;
-    box-shadow: 0 0 0 0;
   }
   
   .clearfix {

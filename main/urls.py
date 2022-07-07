@@ -25,9 +25,11 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('logout/', views.logout_request, name="logout"),
     path('login/', views.login_request, name="login"),
+    path('clients/', views.view_clients, name='view_clients'),
+    path('events/', views.events, name='events'),
     # both methods work.
-    #path('calendar/', views.CalendarView.as_view(), name='calendar'),
-    #path('calendar/<str:month>', views.CalendarView.as_view(), name='calendar'),
+    # path('calendar/', views.CalendarView.as_view(), name='calendar'),
+    # path('calendar/<str:month>', views.CalendarView.as_view(), name='calendar'),
     url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
     url(r'^event/new/$', views.event, name='event_new'),
     url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),

@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from audioop import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
@@ -147,3 +148,23 @@ def event(request, event_id=None):
         return redirect("main:calendar")
         
     return render(request, 'main/event.html', {'form': form})
+
+def events(request):
+    current_user = request.user
+    if current_user.is_authenticated:
+        events = Event.objects.filter(owner=current_user.id)
+        return render(request, 'main/events.html', {'events': events,
+                                                     'page_name': 'Events List'})
+    else:
+        return render(request, 'main/wrong.html')    
+    return NULL
+
+def view_clients(request):
+    current_user = request.user
+    if current_user.is_authenticated:
+        clients = Client.objects.filter(advisor=current_user.id)
+        return render(request, 'main/clients.html', {'clients': clients,
+                                                     'page_name': 'Clients List'})
+    else:
+        return render(request, 'main/wrong.html')
+    

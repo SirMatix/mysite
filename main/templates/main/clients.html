@@ -1,0 +1,30 @@
+{% extends "main/header.html" %}
+{% block title %} Calendar {% endblock title %}
+{% block content %}
+
+    <div class="container">
+        <table>
+            <thead>
+              <tr>
+                  <th>First Name</th>
+                  <th>Surname Name</th>
+                  <th>Date of birth</th>
+                  <th>Phone number</th>
+                  <th>E-mail address</th>
+              </tr>
+            </thead>
+                <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{client.name}}</td>
+                            <td>{{client.surname}}</td>
+                            <td>{{client.dob}}</td>
+                            <td>{{client.phone}}</td>
+                            <td>{{client.email}}</td>
+                        </tr>
+                    {% endfor %}    
+                </tbody>
+        </table>
+    </div>
+
+{% endblock %}
