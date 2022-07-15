@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Event
+from .models import Client, Event
 
 
 # Extension of UserCreationForm 
@@ -37,3 +37,13 @@ class EventForm(forms.ModelForm):
     # input_formats to parse HTML5 datetime-local input to datetime field
     self.fields['start_date'].input_formats = ('%Y-%m-%dT%H:%M',)
     self.fields['end_date'].input_formats = ('%Y-%m-%dT%H:%M',)
+
+class NewClientForm(forms.ModelForm):
+  class Meta:
+    model = Client
+    widgets = {
+      'dob': forms.DateInput(attrs={'type': 'date'}, format='%d/%M/%Y'),
+      'advisor': forms.HiddenInput(),
+      'phone': forms.TextInput(attrs={'placeholder': 'Must be in format +44 1234 567 890'})
+    }
+    fields = ["name","surname","dob","phone","email"]

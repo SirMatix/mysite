@@ -5,7 +5,8 @@ from .models import Client, Event
 class ClientAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Details", {"fields": ["name", "surname", "dob"]}),
-        ("Contact", {"fields": ["phone", "email"]})
+        ("Contact", {"fields": ["phone", "email"]}),
+        ("Administration", {"fields": ["advisor"]}),
     ]
 
 

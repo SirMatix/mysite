@@ -26,6 +26,7 @@ urlpatterns = [
     path('logout/', views.logout_request, name="logout"),
     path('login/', views.login_request, name="login"),
     path('clients/', views.view_clients, name='view_clients'),
+    path('clients/new', views.new_client, name='new_client'),
     path('events/', views.events, name='events'),
     # both methods work.
     # path('calendar/', views.CalendarView.as_view(), name='calendar'),

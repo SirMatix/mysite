@@ -1,5 +1,5 @@
 {% extends "main/header.html" %}
-{% block title %} Calendar {% endblock title %}
+{% block title %} Clients {% endblock title %}
 {% block content %}
 
     <div class="container">
@@ -25,6 +25,14 @@
                     {% endfor %}    
                 </tbody>
         </table>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red" href="/clients/new">
+              <i class="large material-icons">add</i>
+            </a>
+        </div>
+
+
+        
     </div>
 
 {% endblock %}

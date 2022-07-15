@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import EventForm, NewUserForm
+from .forms import EventForm, NewClientForm, NewUserForm
 from django.views import generic
 from django.utils.safestring import mark_safe
 
@@ -147,7 +147,7 @@ def event(request, event_id=None):
         form.save()
         return redirect("main:calendar")
         
-    return render(request, 'main/event.html', {'form': form})
+    return render(request, 'main/new_event.html', {'form': form})
 
 def events(request):
     current_user = request.user
@@ -167,4 +167,22 @@ def view_clients(request):
                                                      'page_name': 'Clients List'})
     else:
         return render(request, 'main/wrong.html')
-    
+
+def new_client(request):
+    current_user = request.user
+    if request.method == "POST":
+        form = NewClientForm(request.POST)
+        if form.is_valid():
+            section = form.save(commit=False)
+            section.advisor = current_user
+            section.save()
+            return redirect("main:view_clients")
+        else:
+            for msg in form.errors:
+                messages.error(request, f"{msg}: {form.errors[msg]}")
+
+    form = NewClientForm
+    context = {"form": form,
+               'page_name': "Add New Client"}
+    template_name= "main/new_client.html"
+    return render(request, template_name, context)
